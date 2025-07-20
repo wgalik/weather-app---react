@@ -1,5 +1,5 @@
-const Result = ({ err, date, city, country, text, temp, wind, pressure }) => {
-  const errorMessage = "Nie ma takiej lokalizacji";
+const Result = ({ err, date, city, country, text, temp, wind, pressure, value }) => {
+  const errorMessage = `Nie ma lokalizacji: ${value}`;
   const content = (
     <>
       <p>Lokalny czas: {date}</p>

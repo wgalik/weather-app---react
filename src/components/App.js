@@ -23,6 +23,7 @@ function App() {
 
   const handleChange = (e) => {
     setValue(e.target.value);
+    if (err) setErr(false);
   };
 
   const handleCitySubmit = (e) => {
@@ -51,14 +52,18 @@ function App() {
         });
         setValue("");
       })
-      .catch(() => setErr(true));
+      .catch(() => {
+        setErr(true);
+      });
   };
 
   return (
     <div className="App">
       Aplikacja pogodowa
       <Form value={value} change={handleChange} submit={handleCitySubmit} />
-      {localWeather.city ? <Result err={err} {...localWeather} /> : null}
+      {localWeather.city ? (
+        <Result err={err} {...localWeather} value={value} />
+      ) : null}
     </div>
   );
 }
