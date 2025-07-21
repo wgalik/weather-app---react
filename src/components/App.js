@@ -1,5 +1,5 @@
-import "./App.css";
-import { useState } from "react";
+import "./App.scss";
+import { useState, useEffect } from "react";
 
 import Form from "./Form";
 import Result from "./Result";
@@ -11,57 +11,43 @@ function App() {
 
   const [err, setErr] = useState(false);
 
-  const [localWeather, setLocalWeather] = useState({
-    date: "",
-    city: "",
-    country: "",
-    text: "",
-    temp: "",
-    wind: "",
-    pressure: "",
-  });
+  const [localWeather, setLocalWeather] = useState(null);
 
   const handleChange = (e) => {
     setValue(e.target.value);
     if (err) setErr(false);
   };
 
-  const handleCitySubmit = (e) => {
-    e.preventDefault();
-
+  useEffect(() => {
     const API = `http://api.weatherapi.com/v1/forecast.json?key=${API_key}&q=${value}&days=7`;
 
-    fetch(API)
-      .then((response) => {
-        if (response.ok) {
-          return response;
-        }
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+    const form = document.querySelector("form");
+    const input = form.querySelector("input");
+    input.focus();
 
-        setLocalWeather({
-          date: data.location.localtime,
-          city: data.location.name,
-          country: data.location.country,
-          text: data.current.condition.text,
-          temp: data.current.temp_c,
-          wind: data.current.wind_kph,
-          pressure: data.current.pressure_mb,
+    if (value) {
+      fetch(API)
+        .then((response) => {
+          if (response.ok) {
+            return response;
+          }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+
+          setLocalWeather(data);
+        })
+        .catch(() => {
+          setErr(true);
         });
-        setValue("");
-      })
-      .catch(() => {
-        setErr(true);
-      });
-  };
+    }
+  }, [value]);
 
   return (
     <div className="App">
-      Aplikacja pogodowa
-      <Form value={value} change={handleChange} submit={handleCitySubmit} />
-      {localWeather.city ? (
+      <Form value={value} change={handleChange} />
+      {value.length > 1 ? (
         <Result err={err} {...localWeather} value={value} />
       ) : null}
     </div>

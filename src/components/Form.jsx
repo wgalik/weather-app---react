@@ -1,13 +1,15 @@
-const Form = ({ value, change, submit }) => {
+const Form = ({ value, change }) => {
+  const className = "active";
+
   return (
-    <form onSubmit={submit}>
+    <form className={value ? className : null}> 
       <input
+        className={value ? className : null}
         type="text"
         value={value}
         onChange={change}
-        placeholder="Wpisz nazwę miasta"
+        placeholder="Search for a city"
       />
-      <button>Wyszukaj miasta</button>
     </form>
   );
 };
