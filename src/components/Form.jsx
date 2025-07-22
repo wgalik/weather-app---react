@@ -1,8 +1,10 @@
+import "./Form.scss";
+
 const Form = ({ value, change }) => {
   const className = "active";
 
   return (
-    <form className={value ? className : null}> 
+    <form className={value ? className : null}>
       <input
         className={value ? className : null}
         type="text"

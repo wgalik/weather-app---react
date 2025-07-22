@@ -1,0 +1,61 @@
+form {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  transition: all 2s ease-in-out;
+
+  &.active {
+    margin-top: 20px;
+    min-height: 5vh;
+  }
+
+  input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b0c4de;
+    height: 5vh;
+    width: 75vw;
+    border-radius: 15px;
+    border: 2px solid #032264;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #032264;
+    transition: all 2s ease-in-out;
+
+    &.active {
+      top: 0;
+      transform: translate(-50%, 0);
+      margin-top: 25px;
+      height: 3vh;
+      width: 55vw;
+      border-radius: 10px;
+      background-color: rgb(241, 224, 198);
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  form {
+    input {
+      width: 65vw;
+
+      &.active {
+        width: 35vw;
+      }
+    }
+  }
+}
+@media (min-width: 992px) {
+  form {
+    input {
+      width: 45vw;
+
+      &.active {
+        width: 20vw;
+      }
+    }
+  }
+}
