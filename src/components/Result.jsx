@@ -44,7 +44,7 @@ const Result = ({ current, forecast, location }) => {
   forecastTomorrow = forecastTomorrow.splice(0, 24 - forecastToday.length);
 
   return (
-    <div className="wrapper">
+    <>
       <header>
         <h1>{location.name}</h1>
         <h5>{location.country}</h5>
@@ -97,7 +97,7 @@ const Result = ({ current, forecast, location }) => {
           {forecastTomorrow}
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
