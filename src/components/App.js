@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <Form value={value} change={handleChange} />
-      {value.length > 1 ? (
+      {value.length > 2 ? (
         <Result err={err} {...localWeather} value={value} />
       ) : null}
     </div>

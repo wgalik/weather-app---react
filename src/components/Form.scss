@@ -24,6 +24,12 @@ form {
     color: #032264;
     transition: all 2s ease-in-out;
 
+    @media (min-width: 576px) {
+      width: 65vw;
+    }
+    @media (min-width: 992px) {
+      width: 45vw;
+    }
     &.active {
       top: 0;
       transform: translate(-50%, 0);
@@ -33,27 +39,10 @@ form {
       border-radius: 10px;
       background-color: rgb(241, 224, 198);
       font-size: 1rem;
-    }
-  }
-}
-
-@media (min-width: 576px) {
-  form {
-    input {
-      width: 65vw;
-
-      &.active {
+      @media (min-width: 576px) {
         width: 35vw;
       }
-    }
-  }
-}
-@media (min-width: 992px) {
-  form {
-    input {
-      width: 45vw;
-
-      &.active {
+      @media (min-width: 992px) {
         width: 20vw;
       }
     }
