@@ -96,9 +96,8 @@ header {
   position: relative;
   z-index: 1;
   font-weight: 100;
-
   h3 {
-    margin: 10px;
+    margin: 10px 0 20px;
   }
 
   div {
@@ -106,19 +105,23 @@ header {
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
-    max-height: 15vh;
-
+    height: 5vh;
     overflow-y: auto;
     scrollbar-width: none;
     margin-bottom: 50px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    p {
-      padding: 10px 0;
+    gap: 20px;
+    @media (min-height: 820px) {
+      height: 10vh;
+    }
+    @media (min-height: 900px) {
+      height: 15vh;
+    }
+    @media (min-height: 1024px) {
+      height: 20vh;
     }
 
     img {

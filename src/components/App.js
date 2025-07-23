@@ -1,29 +1,34 @@
 import "./App.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 
 import Form from "./Form";
 import Result from "./Result";
 
-const API_key = "1a51d915ecd44b3d88c105522252007";
+const API_key = process.env.REACT_APP_API_KEY;
 
 function App() {
   const [value, setValue] = useState("");
-
   const [err, setErr] = useState(false);
-
   const [localWeather, setLocalWeather] = useState(null);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   const handleChange = (e) => {
+    e.preventDefault();
     setValue(e.target.value);
     if (err) setErr(false);
   };
 
-  useEffect(() => {
-    const API = `http://api.weatherapi.com/v1/forecast.json?key=${API_key}&q=${value}&days=7`;
-
+  useLayoutEffect(() => {
     const form = document.querySelector("form");
     const input = form.querySelector("input");
     input.focus();
+  }, []);
+
+  useEffect(() => {
+    const API = `http://api.weatherapi.com/v1/forecast.json?key=${API_key}&q=${value}&days=7`;
 
     if (value) {
       fetch(API)
@@ -34,8 +39,6 @@ function App() {
         })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-
           setLocalWeather(data);
         })
         .catch(() => {
@@ -46,10 +49,8 @@ function App() {
 
   return (
     <div className="App">
-      <Form value={value} change={handleChange} />
-      {value.length > 2 ? (
-        <Result err={err} {...localWeather} value={value} />
-      ) : null}
+      <Form value={value} change={handleChange} submit={handleSubmit} />
+      {value.length > 2 ? <Result {...localWeather} /> : null}
     </div>
   );
 }

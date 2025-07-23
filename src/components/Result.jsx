@@ -2,7 +2,7 @@ import Forecast from "./Forecast";
 
 import "./Result.scss";
 
-const Result = ({ location, current, err, value, forecast }) => {
+const Result = ({ current, forecast, location }) => {
   const localtimeHour = [...location.localtime].splice(11, 2).join("");
   const localtimeMinutes = [...location.localtime].splice(14, 2).join("");
   const localtimeDay = [...location.localtime].splice(8, 2).join("");
@@ -16,8 +16,6 @@ const Result = ({ location, current, err, value, forecast }) => {
   const sunset = [...forecast.forecastday[0].astro.sunset]
     .splice(0, 5)
     .join("");
-
-  // console.log(location, current, forecast);
 
   let forecastToday = forecast.forecastday[0].hour.filter(
     (hour) => hour.time_epoch > location.localtime_epoch
@@ -46,7 +44,7 @@ const Result = ({ location, current, err, value, forecast }) => {
   forecastTomorrow = forecastTomorrow.splice(0, 24 - forecastToday.length);
 
   return (
-    <>
+    <div className="wrapper">
       <header>
         <h1>{location.name}</h1>
         <h5>{location.country}</h5>
@@ -99,7 +97,7 @@ const Result = ({ location, current, err, value, forecast }) => {
           {forecastTomorrow}
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
