@@ -57,8 +57,8 @@ const Result = ({ current, forecast, location }) => {
           <p>{localtimeDate}</p>
         </div>
         <div>
-          <p>Sunrise: {sunrise}</p>
-          <p>Sunset: {sunset}</p>
+          <p>Sunrise: {sunrise} AM</p>
+          <p>Sunset: {sunset} PM</p>
         </div>
       </header>
 

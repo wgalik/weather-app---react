@@ -2,4 +2,17 @@ body {
   min-height: 100vh;
   width: 97vw;
   background: linear-gradient(180deg, #032264, #222b47, #324a77);
+  font-family: "Funnel Display", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #f1e0c6;
+  text-shadow: -1px -1px 2px #032264, 1px -1px 2px #032264, -1px 1px 2px #032264,
+    1px 1px 2px #032264;
+  letter-spacing: 1px;
+  text-align: center;
+  @media (min-height: 600px) {
+    overflow: hidden;
+    touch-action: none;
+    overscroll-behavior: none;
+  }
 }

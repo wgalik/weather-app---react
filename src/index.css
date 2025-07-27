@@ -7,22 +7,3 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-body {
-  font-family: "Funnel Display", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: rgb(241, 224, 198);
-  text-shadow: -1px -1px 2px #032264, 1px -1px 2px #032264, -1px 1px 2px #032264,
-    1px 1px 2px #032264;
-  letter-spacing: 1px;
-  text-align: center;
-}
-
-@media (min-height: 600px) {
-  body {
-    overflow: hidden;
-    touch-action: none;
-    overscroll-behavior: none;
-  }
-}
